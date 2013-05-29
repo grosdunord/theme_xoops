@@ -13,3 +13,10 @@ body{background-image:url(../img/background.jpg);background-repeat:no-repeat;bac
     position: relative;
     transition: all 0.3s ease 0s;
 }
+.blue {
+    background: url("../img/button-shadow.png") no-repeat scroll 8px bottom transparent;
+    display: block;
+    height: 14px;
+    margin-bottom: -12px;
+    outline: medium none;
+}
