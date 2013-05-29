@@ -1,0 +1,64 @@
+<script type="text/javascript">
+	//<![CDATA[
+	  window.addEvent('domready', function(){
+     <{foreachq item=slideshow from=$block.slideshows name=slideShow}>
+	    var data_<{$block.uniqid}>_<{$smarty.foreach.slideShow.index}> = {
+     <{foreachq item=photo from=$slideshow name=slideShowPhotos}>
+     <{if $block.display_type == 'slideshow'}>
+     'thumb_<{$photo.photo_name}>': { caption: '<{$photo.photo_desc|escape:'quotes'}>', href: '<{$xoops_url}>/modules/extgallery/public-slideshow.php?id=<{$photo.cat_id}>' }<{if ! $smarty.foreach.slideShowPhotos.last}>,<{/if}>
+     <{else}>
+     'thumb_<{$photo.photo_name}>': { caption: '<{$photo.photo_desc|escape:'quotes'}>', href: '<{$xoops_url}>/modules/extgallery/public-photo.php?photoId=<{$photo.photo_id}>' }<{if ! $smarty.foreach.slideShowPhotos.last}>,<{/if}>
+     <{/if}>
+     
+     <{/foreach}>
+	    };
+
+     (function () { 
+      <{if $block.transtype == 'fold'}>
+ 	    var myShow = new Slideshow.Fold('extgallery-show-<{$block.uniqid}>_<{$smarty.foreach.slideShow.index}>', data_<{$block.uniqid}>_<{$smarty.foreach.slideShow.index}>, {
+      <{elseif $block.transtype == 'kenburns'}>
+      var myShow = new Slideshow.KenBurns('extgallery-show-<{$block.uniqid}>_<{$smarty.foreach.slideShow.index}>', data_<{$block.uniqid}>_<{$smarty.foreach.slideShow.index}>, {
+      <{elseif $block.transtype == 'push'}>
+      var myShow = new Slideshow.Push('extgallery-show-<{$block.uniqid}>_<{$smarty.foreach.slideShow.index}>', data_<{$block.uniqid}>_<{$smarty.foreach.slideShow.index}>, {
+      <{else}>
+      var myShow = new Slideshow('extgallery-show-<{$block.uniqid}>_<{$smarty.foreach.slideShow.index}>', data_<{$block.uniqid}>_<{$smarty.foreach.slideShow.index}>, {
+      <{/if}>
+        captions: <{$block.desc}>,
+        delay: <{$block.delay}>,
+        duration: <{$block.duration}>,
+        transition: '<{$block.effecttype}>:<{$block.effectoption}>',
+        height: 100,
+        width: 100,
+        overlap: false,
+        resize: false,
+        hu: '<{$xoops_url}>/uploads/extgallery/public-photo/thumb/'}
+      );
+     }).delay(Math.random() * <{$block.delay}>);
+     <{/foreach}>
+     });
+	//]]>
+</script>
+
+<table style="width:100%;">
+<{if $block.direction == 0}>
+<tr>
+<{foreachq item=slideshow from=$block.slideshows name=slideShow}>
+<td style="text-align:center; vertical-align:middle;">
+ <div id="extgallery-show-<{$block.uniqid}>_<{$smarty.foreach.slideShow.index}>" class="slideshow-block">
+  <img src="<{$xoops_url}>/uploads/extgallery/public-photo/thumb/thumb_<{$slideshow[0].photo_name}>" alt="<{$slideshow[0].photo_desc|escape:'html'}>" />
+ </div>
+</td>
+<{/foreach}>
+</tr>
+<{else}>
+<{foreachq item=slideshow from=$block.slideshows name=slideShow}>
+<tr>
+<td style="text-align:center; vertical-align:middle;">
+ <div id="extgallery-show-<{$block.uniqid}>_<{$smarty.foreach.slideShow.index}>" class="slideshow-block">
+  <img src="<{$xoops_url}>/uploads/extgallery/public-photo/thumb/thumb_<{$slideshow[0].photo_name}>" alt="<{$slideshow[0].photo_desc|escape:'html'}>" />
+ </div>
+</td>
+</tr>
+<{/foreach}>
+<{/if}>
+</table>

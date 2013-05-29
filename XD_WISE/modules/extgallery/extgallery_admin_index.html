@@ -1,0 +1,85 @@
+<table>
+	<tr>
+		<td width="40%">
+		   <div id="xo-extgallery-icon">
+					<a class="tooltip" href="<{xoAppUrl modules/extgallery/admin/index.php}>" title="<{$smarty.const._MI_EXTGALLERY_INDEX}>"><img src='<{xoAppUrl modules/extgallery/images/icons/index.png}>' /><br /><span><{$smarty.const._MI_EXTGALLERY_INDEX}></span></a>
+					<a class="tooltip" href="<{xoAppUrl modules/extgallery/admin/public-category.php}>" title="<{$smarty.const._MI_EXTGALLERY_PUBLIC_CAT}>"><img src='<{xoAppUrl modules/extgallery/images/icons/category.png}>' /><br /><span><{$smarty.const._MI_EXTGALLERY_PUBLIC_CAT}></span></a>
+					<a class="tooltip" href="<{xoAppUrl modules/extgallery/admin/photo.php}>" title="<{$smarty.const._MI_EXTGALLERY_PHOTO}>"><img src='<{xoAppUrl modules/extgallery/images/icons/photo.png}>' /><br /><span><{$smarty.const._MI_EXTGALLERY_PHOTO}></span></a>
+					<a class="tooltip" href="<{xoAppUrl modules/extgallery/admin/perm-quota.php}>" title="<{$smarty.const._MI_EXTGALLERY_PERMISSIONS}>"><img src='<{xoAppUrl modules/extgallery/images/icons/perm.png}>' /><br /><span><{$smarty.const._MI_EXTGALLERY_PERMISSIONS}></span></a>
+					<a class="tooltip" href="<{xoAppUrl modules/extgallery/admin/watermark-border.php}>" title="<{$smarty.const._MI_EXTGALLERY_WATERMARK_BORDER}>"><img src='<{xoAppUrl modules/extgallery/images/icons/watermark.png}>' /><br /><span><{$smarty.const._MI_EXTGALLERY_WATERMARK_BORDER}></span></a>
+					<a class="tooltip" href="<{xoAppUrl modules/extgallery/admin/slideshow.php}>" title="<{$smarty.const._MI_EXTGALLERY_SLIDESHOW}>"><img src='<{xoAppUrl modules/extgallery/images/icons/slideshow.png}>' /><br /><span><{$smarty.const._MI_EXTGALLERY_SLIDESHOW}></span></a>
+					<a class="tooltip" href="<{xoAppUrl modules/extgallery/admin/extention.php}>" title="<{$smarty.const._MI_EXTGALLERY_EXTENTION}>"><img src='<{xoAppUrl modules/extgallery/images/icons/extention.png}>' /><br /><span><{$smarty.const._MI_EXTGALLERY_EXTENTION}></span></a>
+					<a class="tooltip" href="<{xoAppUrl modules/extgallery/admin/album.php}>" title="<{$smarty.const._MI_EXTGALLERY_ALBUM}>"><img src='<{xoAppUrl modules/extgallery/images/icons/album.png}>' /><br /><span><{$smarty.const._MI_EXTGALLERY_ALBUM}></span></a>
+					<a class="tooltip" href="<{xoAppUrl modules/extgallery/admin/about.php}>" title="<{$smarty.const._MI_EXTGALLERY_ABOUT}>"><img src='<{xoAppUrl modules/extgallery/images/icons/about.png}>' /><br /><span><{$smarty.const._MI_EXTGALLERY_ABOUT}></span></a>
+					<a class="tooltip" href="<{xoAppUrl modules/system/admin.php?fct=preferences&op=showmod&mod=}><{$mid}>" title="<{$smarty.const._AM_EXTGALLERY_PREFERENCES}>"><img src='<{xoAppUrl modules/extgallery/images/icons/prefs.png}>' /><br /><span><{$smarty.const._AM_EXTGALLERY_PREFERENCES}></span></a>
+		   </div>
+		</td>
+		<td width="59%">
+		   <div id="xo-extgallery-index">
+			<!-- <div>
+				<fieldset>
+					<legend style="font-weight:bold; color:#990000;"><{$smarty.const._AM_EXTGALLERY_UPDATE_INFO}></legend>
+					<{if $modlastver}>
+						<div><span style="color:black; font-weight:bold;"><{$CHECK_UPDATE_ERROR}></span></div>
+					<{else if $modupdate}>
+						<{if $xvslmv}>
+							<div><h3 style="color:red;"><{$smarty.const._AM_EXTGALLERY_UPDATE_KO}></h3></div>
+								<div>
+									<form action="upgrade.php" method="post">
+										<input type="hidden" name="step" value="download" />
+										<input class="formButton" value="<{$smarty.const._AM_EXTGALLERY_UPDATE_UPGRADE}>" type="submit" />
+									</form>
+								</div>
+							<div>
+								<fieldset>
+									<legend style="font-weight:bold; color:#0A3760;"><{$smarty.const._AM_EXTGALLERY_CHANGELOG}></legend>
+									<div><{$getChangelog}></div>
+								</fieldset>
+							</div>
+						<{$else}>
+							<div><{$notsupport}></div>
+						<{/if}>
+					<{$else}>
+						<span style="color:green;"><{$UPDATE_OK}></span>
+					<{/if}>
+				</fieldset> 
+			</div>
+			<br /> -->
+			<div>
+				<fieldset>
+					<legend style="font-weight:bold; color:#990000;"><{$smarty.const._AM_EXTGALLERY_SERVER_CONF}></legend>
+				   <div>
+					   <div><{$smarty.const._AM_EXTGALLERY_EXTGALLERY_VERSION}> : <b><{$moduleVersion}></b></div>
+						<div><{$smarty.const._AM_EXTGALLERY_XOOPS_VERSION}> : <b><{$xoops_version}> (<{$testversion}>)</b></div>
+						<br />
+						<div>
+							<{if $graphic_lib == GD }>
+								<p><{$smarty.const._AM_EXTGALLERY_GRAPH_GD_LIB_VERSION}> : <b><{$testgd}></b></p>
+								<p><{$smarty.const._AM_EXTGALLERY_GIF_SUPPORT}> : <{$testgif}></p>
+								<p><{$smarty.const._AM_EXTGALLERY_JPEG_SUPPORT}> : <{$testjpeg}></p>
+								<p><{$smarty.const._AM_EXTGALLERY_PNG_SUPPORT}> : <{$testpng}></p>
+							<{/if}>
+						</div>
+						<div>
+							<{if $graphic_lib == IM }>
+								<p><{$smarty.const._AM_EXTGALLERY_GRAPH_IM_LIB_VERSION}> : <b><{$testim}></b></p>
+								<p><{$smarty.const._AM_EXTGALLERY_GIF_SUPPORT}> : <{$imSupportgif}></p>
+								<p><{$smarty.const._AM_EXTGALLERY_JPEG_SUPPORT}> : <{$imSupportjpg}></p>
+								<p><{$smarty.const._AM_EXTGALLERY_PNG_SUPPORT}> : <{$imSupportpng}></p>
+							<{/if}>
+						</div>
+						<div>
+							<{foreach item=error from=$errors}>
+								<p><{$error}></p>
+							<{/foreach}>
+						</div>
+						<br />
+						<div>Upload max filesize : <b><{$upload_max_filesize}></b></div>
+						<div>Post max size : <b><{$post_max_size}></b></div>   
+				   </div>
+				</fieldset>
+			</div>
+			</div>
+		</td>
+	</tr>
+</table>

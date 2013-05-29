@@ -1,0 +1,102 @@
+<{if $user_ownpage == true}>
+
+<form name="usernav" action="user.php" method="post">
+
+
+<table class="width70 aligncenter bnone">
+  <tr class="txtcenter">
+    <td><input type="button" value="<{$lang_editprofile}>" onclick="location='edituser.php'" />
+    <input type="button" value="<{$lang_avatar}>" onclick="location='edituser.php?op=avatarform'" />
+    <input type="button" value="<{$lang_inbox}>" onclick="location='viewpmsg.php'" />
+
+    <{if $user_candelete == true}>
+    <input type="button" value="<{$lang_deleteaccount}>" onclick="location='user.php?op=delete'" />
+    <{/if}>
+
+    <input type="button" value="<{$lang_logout}>" onclick="location='user.php?op=logout'" /></td>
+  </tr>
+</table>
+</form>
+<br />
+<{elseif $xoops_isadmin != false}>
+
+<br /><br />
+
+<table class="width70 aligncenter bnone">
+  <tr class="txtcenter">
+    <td><input type="button" value="<{$lang_editprofile}>" onclick="location='<{$xoops_url}>/modules/system/admin.php?fct=users&uid=<{$user_uid}>&op=modifyUser'" />
+    <input type="button" value="<{$lang_deleteaccount}>" onclick="location='<{$xoops_url}>/modules/system/admin.php?fct=users&op=delUser&uid=<{$user_uid}>'" />
+  </tr>
+</table>
+
+<br /><br />
+<{/if}>
+<table class="userinfo">
+  <td class="userinfo68">
+    <img style="background: none repeat scroll 0 0 #FFFFFF;float: left;margin-left: 20px;margin-top: 20px;padding: 15px;width:100px;height:100px" src="<{$user_avatarurl}>" alt="Avatar" />
+        <ul>
+          <li style="font-weight:bold;font-size: 18px;color:#000;"><{$lang_allaboutuser}></li>
+          
+          <li><{$lang_rank}> <strong style="padding-left:70px"><{$user_rankimage}></strong><br /><span style="padding-left:140px"><{$user_ranktitle}></span></li>
+          <{if !$user_realname}><{else}><li><{$lang_realname}> : <span style="padding-left:76px"><{$user_realname}></span></li><{/if}>
+          <li><{$lang_membersince}> : <span style="padding-left:44px"><{$user_joindate}></span></li>
+              <li><{$lang_posts}> : <span style="padding-left:55px"><{$user_posts}></span></li>
+              <li><{$lang_lastlogin}> : <span style="padding-left:21px"><{$user_lastlogin}></span></li>
+              
+          <{if !$user_location}><{else}><li><{$lang_location}> : <span style="padding-left:75px"><{$user_location}></span></li><{/if}>
+              <{if !$user_occupation}><{else}><li><{$lang_occupation}> : <span style="padding-left:73px"><{$user_occupation}></span></li><{/if}>
+               <{if !$user_interest}><{else}><li><{$lang_interest}> : <span style="padding-left:33px"><{$user_interest}></span></li><{/if}>
+               <li><{if !$user_extrainfo}><{else}><{$lang_extrainfo}> : <br/><{$user_extrainfo}></li><{/if}>
+            </ul>  
+  </td>
+  <td style="width:20px"></td>
+  <td class="userinfo30">
+    <div class="blockaction">
+      <ul>
+        <li style="color:#000;font-weight:bold;font-size: 18px;">Actions</li>
+        <{if $user_websiteurl}><li><img src="<{xoImgUrl images/mini-siteweb.png}>" alt=""/><span style="padding-left: 5px; line-height: 40px;"><{$user_websiteurl}></span></li><{/if}>
+            <li><{if !empty($user_email) }><img src="<{xoImgUrl images/mini-email.png}>" alt=""/><a style="padding-left: 5px; line-height: 40px;" href="mailto:<{$user_email}>">Envoyer un email</a><{/if}></li>
+            <{if !$user_ownpage == true}>
+              <li style="line-height: 40px;"><{if !$xoops_isuser}> <{else}><img src="<{$xoops_url}>/images/icons/pm.gif" alt=""/><span style="padding-left: 5px;"><{$user_pmlink}></pan><{/if}> </li>
+            <{/if}>
+          </ul>
+        </div>
+        
+
+   		 <{if $user_icq}><div class="blocktwit"><img src="<{xoImgUrl images/twitter.png}>" alt=""/><span style="line-height: 46px;padding-left: 10px;"><a href="https://twitter.com/<{$user_icq}>" title="Twitter - <{$user_icq}>" target="_blank">Profil Twitter</a> </span></div><{/if}>
+                <{if $user_aim}><div class="blockfb"><img src="<{xoImgUrl images/facebook.png}>" alt=""/><span style="line-height: 46px;padding-left: 10px;"><a href="https://www.facebook.com/<{$user_aim}>" title="FaceBook - <{$user_aim}>" target="_blank">Profil FaceBook</a></span></div><{/if}>
+		  <{if $user_yim}><div class="blockgg"><img src="<{xoImgUrl images/mini-GG+.png}>" alt=""/><span style="line-height: 46px;padding-left: 10px;"><a href="https://plus.google.com/u/0/<{$user_yim}>" title="Google Plus - <{$user_yim}>" target="_blank">Profil Google +</a></span></div><{/if}>
+          <{if $user_msnm}><div class="blockmsn"><img src="<{xoImgUrl images/mini-msn.png}>" alt=""/><span style="line-height: 46px;padding-left: 10px;"><a href="http://profile.live.com/<{$user_msnm}>" title="Live messenger - <{$user_msnm}>" target="_blank">Profil Live Messenger </a></span></div><{/if}>
+          
+        
+  </td>
+
+</table>
+
+<br class="clear" />
+
+
+<!-- start module search results loop -->
+<{foreach item=module from=$modules}>
+
+<br class="clear" />
+<table class="blockaction" style="padding-bottom:15px">
+<tr>
+<td>
+<h4 style="line-height:25px;margin-top:50px;padding-left:15px"><{$module.name}></h4>
+
+  <!-- start results item loop -->
+  <{foreach item=result from=$module.results}>
+
+  <img style="padding-left:15px" src="<{$result.image}>" alt="<{$module.name}>" /><strong style="padding-left:5px"><a href="<{$result.link}>" title="<{$result.title}>"><{$result.title}></a></strong><span class="x-small" style="padding-left:5px">(<{$result.time}>)</span><br />
+
+  <{/foreach}>
+  <!-- end results item loop -->
+<br/>
+<div style="padding-left:15px"><{$module.showall_link}></div>
+</td>
+</tr>
+</table>
+
+<{/foreach}>
+<!-- end module search results loop -->

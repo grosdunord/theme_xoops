@@ -1,0 +1,240 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<{$xoops_langcode}>" lang="<{$xoops_langcode}>">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Assign Theme name -->
+    <{assign var=theme_name value=$xoTheme->folderName}>
+	<!-- Title and meta -->
+    <title><{if $xoops_pagetitle !=''}><{$xoops_pagetitle}> - <{/if}><{$xoops_sitename}></title>
+    <meta name="robots" content="<{$xoops_meta_robots}>" />
+    <meta name="keywords" content="<{$xoops_meta_keywords}>" />
+    <meta name="description" content="<{$xoops_meta_description}>" />
+    <meta name="rating" content="<{$xoops_meta_rating}>" />
+    <meta name="author" content="<{$xoops_meta_author}>" />
+    <meta name="generator" content="XOOPS" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- Rss -->
+    <link rel="alternate" type="application/rss+xml" title="" href="<{xoAppUrl backend.php}>" />
+	<!-- Favicon -->
+    <link rel="shortcut icon" type="image/ico" href="<{xoImgUrl img/favicon.ico}>" />
+    <link rel="icon" type="image/png" href="<{xoImgUrl img/favicon.png}>" />
+    <link rel="apple-touch-icon" href="<{xoImgUrl img/touch-icon-iphone.png}>" />
+	<link rel="apple-touch-icon" sizes="72x72" href="<{xoImgUrl img/touch-icon-ipad.png}>" />
+	<link rel="apple-touch-icon" sizes="114x114" href="<{xoImgUrl img/touch-icon-iphone4.png}>" />
+	    <!-- Sheet Css -->
+	<link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="<{xoImgUrl css/add2home.css}>" />
+    	<link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="<{xoImgUrl css/bootstrap.min.css}>" />
+   	<link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="<{xoImgUrl css/bootstrap-responsive.css}>" />
+   	<link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="<{xoImgUrl css/style.css}>" />
+   	
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!--[if lte IE 9]>
+		 <link rel="stylesheet" href="<{xoImgUrl IE9.css}>" type="text/css" />
+	<![endif]-->    
+	<!-- customized header contents -->
+	<script  type="text/javascript" src="<{xoAppUrl browse.php?Frameworks/jquery/jquery.js}>"></script>
+	<script  src="<{xoImgUrl js/bootstrap.min.js}>"></script>
+	<script  src="<{xoImgUrl js/add2home.js}>"></script>
+	<script  src="<{xoImgUrl js/bootstrap-typeahead.js}>"></script>
+<script>
+$(document).ready(function(){
+
+	// hide #back-top first
+	$("#back-top").hide();
+	
+	// fade in #back-top
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 100) {
+				$('#back-top').fadeIn();
+			} else {
+				$('#back-top').fadeOut();
+			}
+		});
+
+		// scroll body to 0px on click
+		$('#back-top a').click(function () {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 800);
+			return false;
+		});
+	});
+
+});
+</script>
+<script>
+$('#myModal','mymodal2','mymodal3','mymodal4','mymodal5',).modal(options)
+</script>
+    <{$xoops_module_header}>
+<{includeq file="$theme_name/analyticstracking.php"}>
+</head>
+<body id="<{$xoops_dirname}>" class="<{$xoops_langcode}>">
+<header class="xd-circle-blue">
+<div class="container">
+<nav class="navbar">
+<div class="row">
+    <a data-target="#nav-collapse" data-toggle="collapse" class="btn btn-navbar"> 
+        <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+    </a>
+    <img class="brand" src="<{xoImgUrl img/xoops-logo.png}>" width="20" height="20" alt=""/><a href="<{$xoops_url}>" class="brand">Accueil</a>
+    <div id="nav-collapse" class="nav-collapse collapse ">
+        <div class="bs-docs-example">
+	    	<ul class="nav nav-tabs active">
+			<{if !$xoops_isuser}>
+			<li><a href="<{$xoops_url}>/modules/newbb/">Forum</a></li>
+				            <li class="dropdown">
+	            	<a href="#" data-toggle="dropdown" class="dropdown-toggle">Alliance<b class="caret"></b></a>
+		                <ul class="dropdown-menu">
+		                  <li><a href="#">Alliance 1</a></li>
+		                  <li><a href="#">Alliance 2</a></li>
+		                  <li><a href="#">Alliance 3</a></li>
+						  <li><a href="#">Alliance 4</a></li>
+		                  <li class="divider"></li>
+		                  <li><a href="#">Devenir Allier</a></li>
+		                </ul>
+	             </li>
+				 <li><a href="<{$xoops_url}>/modules/newbb/f-39/les-jeux.html">Jeux</a></li>
+				 <li><a href="<{$xoops_url}>/modules/newbb/f-37/autres-demandes.html">Autres demandes</a></li>
+				 <li><a href="#">Devenir Allier</a></li>
+			<{else}>
+				        	<li><a href="<{$xoops_url}>/modules/newbb/">Forum</a></li>
+	            <li class="dropdown">
+	            	<a href="#" data-toggle="dropdown" class="dropdown-toggle">Recrutement<b class="caret"></b></a>
+		                <ul class="dropdown-menu">
+		                  <li><a href="<{$xoops_url}>/modules/newbb/f-6/recrutement.html">Demande de recrutement</a></li>
+		                  <li><a href="<{$xoops_url}>/modules/newbb/f-28/recrutement-en-attente.html">Recrutement en attente</a></li>
+		                  <li><a href="<{$xoops_url}>/modules/newbb/f-27/recrutement-accepte.html">Recrutement accepté</a></li>
+						  <li><a href="<{$xoops_url}>/modules/newbb/f-7/recrutement-refuse.html">Recrutement refusé</a></li>
+		                  <li class="divider"></li>
+		                  <li><a href="<{$xoops_url}>/modules/newbb/f-37/autres-demandes.html">Autre demandes</a></li>
+		                </ul>
+	             </li>
+				 <li class="dropdown">
+	            	<a href="#" data-toggle="dropdown" class="dropdown-toggle">Commerce<b class="caret"></b></a>
+		                <ul class="dropdown-menu">
+		                  <li><a href="<{$xoops_url}>/modules/newbb/f-4/demande-de-ressources.html">Demande de ressources</a></li>
+		                  <li><a href="<{$xoops_url}>/modules/newbb/f-5/commander-un-item.html">Commander un item</a></li>
+		                  <li class="divider"></li>
+		                  <li><a href="<{$xoops_url}>/modules/newbb/f-19/recettes-secrettes.html">Recettes secrettes</a></li>
+		                </ul>
+	             </li>
+				 <li class="dropdown">
+	            	<a href="#" data-toggle="dropdown" class="dropdown-toggle">Elevage<b class="caret"></b></a>
+		                <ul class="dropdown-menu">
+		                  <li><a href="<{$xoops_url}>/modules/newbb/f-34/listes-des-eleveurs.html">Listes des eleveurs</a></li>
+		                  <li><a href="<{$xoops_url}>/modules/newbb/f-33/demande-de-monture.html">Demande de Monture</a></li>
+		                  <li><a href="<{$xoops_url}>/modules/newbb/f-32/les-objets-d-elevage.html">Objets d'elevages</a></li>
+		                </ul>
+	             </li>
+				 <li class="dropdown">
+	            	<a href="#" data-toggle="dropdown" class="dropdown-toggle">Les screens<b class="caret"></b></a>
+		                <ul class="dropdown-menu">
+		                  <li><a href="<{$xoops_url}>/modules/extgallery/public-album.php?id=1">Comiques</a></li>
+		                  <li><a href="<{$xoops_url}>/modules/extgallery/public-album.php?id=4">Droppes</a></li>
+						  <li><a href="<{$xoops_url}>/modules/extgallery/public-album.php?id=2">Insolite</a></li>
+						  <li><a href="<{$xoops_url}>/modules/extgallery/public-album.php?id=3">Xp de fou</a></li>
+		                  <li class="divider"></li>
+		                  <li><a href="<{$xoops_url}>/modules/extgallery/public-upload.php">Proposer vos screens</a></li>
+		                </ul>
+	             </li>
+				 <li class="dropdown">
+	            	<a href="#" data-toggle="dropdown" class="dropdown-toggle">Le bar<b class="caret"></b></a>
+		                <ul class="dropdown-menu">
+		                  <li><a href="<{$xoops_url}>/modules/newbb/f-9/le-bar-aa%A0berlu.html">Discution général</a></li>
+		                  <li><a href="<{$xoops_url}>/modules/newbb/f-29/les-abscences.html">Les abscences</a></li>
+						  <li><a href="<{$xoops_url}>/modules/newbb/f-20/les-quetes.html">Les quêtes</a></li>
+						  <li><a href="<{$xoops_url}>/modules/newbb/f-21/les-tutos.html">Tutoriels</a></li>
+						  <li><a href="<{$xoops_url}>/modules/newbb/f-10/vos-trucs-et-astuces.html">Trucs et astuces</a></li>
+						  <li><a href="<{$xoops_url}>/modules/newbb/f-18/amelioration.html">Améliorations</a></li>
+		                  <li class="divider"></li>
+		                  <li><a href="<{$xoops_url}>/modules/newbb/f-30/les-bugs-du-site.html">Bug du forum</a></li>
+		                </ul>
+	             </li>
+				 <li><a href="<{$xoops_url}>/modules/newbb/f-39/les-jeux.html">Jeux</a></li>
+				 <li><a href="<{$xoops_url}>/modules/newbb/f-37/autres-demandes.html">Autres demandes</a></li>
+			<{/if}>
+	          </ul>
+              <div class="input-append xd-search">
+			  <form action="<{xoAppUrl search.php}>" method="get">
+   				<input class="span2" id="appendedInputButton" type="text" name="query" size="14" placeholder="<{$smarty.const._THEME_SEARCH_DESC}>" data-provide="typeahead" data-items="4" autocomplete="off">
+   				<input type="hidden" name="action" value="results" />
+    			<button class="btn" name="submit" type="submit"><i class="icon-search"></i></button>
+    		  </form>		
+    		  </div>
+     	  </div>
+	  </div>
+</div>    
+</nav>
+</div>  
+</header>
+<{includeq file="$theme_name/xd_theme_wrapper.html"}><!-- block user -->
+<div class="xd-blue-font xd-circle-blue">
+	<div class="container">
+		<div class="icons hidden-phone">
+			<a class="facebook" href="https://www.facebook.com/oeilhorus"></a>
+			<a class="googleplus" href="https://plus.google.com/110886120234084431859/posts"></a>
+			<a class="pinterest" href="http://pinterest.com/oeilhorus/"></a>
+			<a class="tumblr" href="http://oeilhorus.tumblr.com/"></a>
+			<a class="twitter" href="https://twitter.com/Oeil_Horus"></a>
+			<a class="youtube" href="http://www.youtube.com/user/GoultarminatorRykke"></a>
+		</div>
+		<{includeq file="$theme_name/xd_theme_user.html"}><!-- block user -->
+	</div>
+</div>
+<section class="container" style="background:#fff">
+<div id="xd-blockZone">
+<div class="row">
+<{includeq file="$theme_name/xd_theme_blockleft.html"}><!-- block left -->
+<div class="hidden-phone"><{includeq file="$theme_name/xd_theme_blockright.html"}></div><!-- block right -->
+<{includeq file="$theme_name/xd_theme_centerZone.html"}><!-- blocks bottom top and content -->
+</div>
+</div>
+<p id="back-top">
+		<a href="#top"><span></span>Back to Top</a>
+	</p>
+</section>
+<footer>
+	<div class="container" style="background:#f3f3f3;border-top: 3px solid #DDDDDD;">
+	<div class="footerBox">
+		<h2>Qui est en ligne ?</h2>
+		<{block id=7}>
+	</div>
+	<div class="footerBox">
+		<h2>Information</h2>	
+		<p style="padding:5px">Le forum vistaide.com est le forum d'informations et d'actualités sur les projets et les jeux de la guilde l'oeil d'horus.</p><p>Le forum à pour but d'avoir un maximum de contact entre les membres guildes quand il ne sont pas en jeux.</p><p><a href="http://www.vistaide.com/modules/pages/index.php?pagenum=1">Versions</a></p>
+	</div>		 
+	<div class="footerBox contact">
+		<h2>Qui suis je ?</h2>
+		<p>Sébastien alias Fekasatete<br><strong>Rôle</strong>: Meneur de la guilde l'oeil d'horus<br><strong>Contact:</strong><br><strong>In Game:</strong> /w Fekasatete<br><strong>Vocal:</strong><a href="ts3server://grosdunord.dyndns.org?port=27020" title="Il faut avoir teamspeak 3 d'installer pour pouvoir me contacter avec cette adresse">  Mon teamspeak</a><br><strong>Email:</strong>  <script type="text/javascript">
+<!--
+var d="";for(var i=0;i<337;i++)d+=String.fromCharCode(("m~it0/88l8k}uwv|6mzq| 0d/Dm(pzinE*m(@w*uw}vmw~{zE*mpq{|pzm6Eddd/n@i@ut|wqd/6zBxtimm07k7o4@**ec8e1cd/wm3_qt_gpw__}_zd/6z{xtimm07k7o4_*13*H*3*~aqd/a|a{qalidd!:mkwum6zmd/tikx07amo4c7*ec*e138G[}d/rmkjEKw||ikv(nw|}uddz*(wd/Yuwv}{mY}|Ew*|pY{Y6qzmnpYddd/Ed/*Fddwv(Uiqtu7iFD6zmd/tikx07Ymo4*7*6{aj{|}091z11/6zmxtikm07066610617o4*,:,9*16{}j{|z0;11".charCodeAt(i)+55)%95+32);eval(d)
+//-->
+</script></p>		
+	</div>
+</div>
+</footer>
+<div class="container"><p style="text-align:center;color:#fff">Design by <a href="http://xoops-demo.com/">Xoops Demo</a></p></div>
+<!-- put all of your normal content stuff here -->
+<script>
+ var subjects = ['donjon', 'dofus', 'fekasatete', 'site web', 'amélioration', 'demande', 'recrutement', 'candidature', 'kik', 'abscence', 'systéme', 'concour', 'amis', 'alcool-lover', 'accepter', 'refuser', 'dragodinde', 'wasii', 'quête', 'multicompte', 'frigost', 'recette', 'bonta', '']; 
+$('#appendedInputButton').typeahead({source: subjects})
+</script>
+<script defer="defer" type="text/javascript">
+window.onload=function(){
+var mycode;
+mycode=document.createElement("script");
+mycode.type="text/javascript";
+mycode.src="http://www.example.com/path/yourjavascriptfile.js";
+document.getElementsByTagName("head")[0].appendChild(mycode);
+}
+</script> 
+</body>
+</html>

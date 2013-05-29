@@ -1,0 +1,55 @@
+<table class="table table-striped outer bspacing1">
+    <{if $block.disp_mode == 0}>
+        <tr>
+            <th class="head nowrap"><{$smarty.const._MB_NEWBB_FORUM}></th>
+            <th class="head nowrap"><{$smarty.const._MB_NEWBB_TOPIC}></th>
+            <th class="hidden-phone head text-center nowrap"><{$smarty.const._MB_NEWBB_RPLS}></th>
+            <th class="hidden-phone head text-center nowrap"><{$smarty.const._MB_NEWBB_VIEWS}></th>
+            <th class="head text-center nowrap"><{$smarty.const._MB_NEWBB_LPOST}></th>
+        </tr>
+
+        <{foreachq item=topic from=$block.topics}>
+            <tr class="<{cycle values="even,odd"}>">
+                <td><{$topic.seo_forum_url}></td>
+                <td><{$topic.seo_url}></td>
+                <td class="hidden-phone text-center"><{$topic.replies}></td>
+                <td class="hidden-phone text-center"><{$topic.views}></td>
+                <td class="right"><{$topic.time}><br /><{$topic.topic_poster}></td>
+            </tr>
+        <{/foreach}>
+
+    <{elseif $block.disp_mode == 1}>
+
+        <tr>
+            <th class="head nowrap"><{$smarty.const._MB_NEWBB_TOPIC}></th>
+            <th class="head text-center nowrap"><{$smarty.const._MB_NEWBB_RPLS}></th>
+            <th class="head text-center nowrap"><{$smarty.const._MB_NEWBB_LPOST}></th>
+        </tr>
+
+        <{foreachq item=topic from=$block.topics}>
+            <tr class="<{cycle values="even,odd"}>">
+                <td><{$topic.seo_url}></td>
+                <td class="text-center"><{$topic.replies}></td>
+                <td class="right"><{$topic.time}><br /><{$topic.topic_poster}></td>
+            </tr>
+        <{/foreach}>
+
+    <{elseif $block.disp_mode == 2}>
+
+        <{foreachq item=topic from=$block.topics}>
+            <tr class="<{cycle values="even,odd"}>">
+                <td><{$topic.seo_url}></td>
+            </tr>
+        <{/foreach}>
+
+    <{/if}>
+
+</table>
+
+<{if $block.indexNav}>
+    <div class="text-right pad5">
+        <{$block.seo_top_allposts}> |
+        <{$block.seo_top_alltopics}> |
+        <{$block.seo_top_allforums}>
+    </div>
+<{/if}>

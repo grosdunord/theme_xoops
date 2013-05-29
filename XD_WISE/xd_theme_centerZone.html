@@ -1,0 +1,82 @@
+<{if $xoBlocks.canvas_left && $xoBlocks.canvas_right}>
+<div id="xd-zone-center" class="span8">	<!-- Si les blocks gauche et droit sont activés-->
+<{elseif $xoBlocks.canvas_left}>
+<div id="xd-zone-center" class="span10">	<!-- Si le block gauche est activé -->
+<{elseif $xoBlocks.canvas_right}>
+<div id="xd-zone-center" class="span10">	<!-- Si le block droit est activé -->
+<{else}>
+<div id="xd-zone-center" class="span11">	<!-- si juste centre -->
+<{/if}>
+	
+    <{if $xoBlocks.page_topcenter}>
+    <div id="xd-centerBlock">
+        <{foreach item=block from=$xoBlocks.page_topcenter}>
+        <div id="xd-block-<{$block.module}>-<{$block.id}>" class="xd-Block">
+        <{if $block.title}><div class="xd-blockTitle"><{$block.title}></div><{/if}>
+        <div class="xd-blockContent"><{$block.content}></div>
+        </div>
+        <{/foreach}>
+    </div>
+	<{/if}>
+	
+	<{if $xoBlocks.page_topleft}>
+    <div id="xd-centerLeft">
+        <{foreach item=block from=$xoBlocks.page_topleft}>
+        <div id="xd-block-<{$block.module}>-<{$block.id}>" class="xd-Block">
+        <{if $block.title}><div class="xd-blockTitle"><{$block.title}></div><{/if}>
+        <div class="xd-blockContent"><{$block.content}></div>
+        </div>
+        <{/foreach}>
+    </div>
+	<{/if}>
+	
+	<{if $xoBlocks.page_topright}>
+    <div id="xd-centerRight">
+        <{foreach item=block from=$xoBlocks.page_topright}>
+        <div id="xd-block-<{$block.module}>-<{$block.id}>" class="xd-Block">
+        <{if $block.title}><div class="xd-blockTitle"><{$block.title}></div><{/if}>
+        <div class="xd-blockContent"><{$block.content}></div>
+        </div>
+        <{/foreach}>
+    </div>
+	<{/if}>
+	
+
+	<{if $xoops_contents}><div id="xd-content"><{$xoops_contents}></div><{/if}>
+	
+	<{if $xoBlocks.page_bottomcenter}>
+    <div id="xd-centerBlock-bottom">
+        <{foreach item=block from=$xoBlocks.page_bottomcenter}>
+        <div id="xd-block-<{$block.module}>-<{$block.id}>" class="xd-Block">
+        <{if $block.title}><div class="xd-blockTitle"><{$block.title}></div><{/if}>
+        <div class="xd-blockContent"><{$block.content}></div>
+        </div>
+        <{/foreach}>
+    </div>
+	<{/if}>
+	
+	
+	<{if $xoBlocks.page_bottomleft}>
+    <div id="xd-leftBottom">
+        <{foreach item=block from=$xoBlocks.page_bottomleft}>
+        <div id="xd-block-<{$block.module}>-<{$block.id}>" class="xd-Block">
+        <{if $block.title}><div class="xd-blockTitle"><{$block.title}></div><{/if}>
+        <div class="xd-blockContent"><{$block.content}></div>
+        </div>
+        <{/foreach}>
+    </div>
+	<{/if}>
+
+
+	<{if $xoBlocks.page_bottomright}>
+    <div id="xd-rightBottom">
+        <{foreach item=block from=$xoBlocks.page_bottomright}>
+        <div id="xd-block-<{$block.module}>-<{$block.id}>" class="xd-Block">
+        <{if $block.title}><div class="xd-blockTitle"><{$block.title}></div><{/if}>
+        <div class="xd-blockContent"><{$block.content}></div>
+        </div>
+        <{/foreach}>
+    </div>
+	<{/if}>
+																	
+</div>

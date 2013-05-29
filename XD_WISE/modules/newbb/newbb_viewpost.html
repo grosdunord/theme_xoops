@@ -1,0 +1,142 @@
+
+    <div class="forum_title">
+	<ul class="breadcrumb"> 
+        
+        <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php"><{$smarty.const._MD_FORUMHOME}></a>               
+        <{if $parent_forum}>
+             <li><span class="divider">/</span></li>
+            <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewforum.php?forum=<{$parent_forum}>"><{$parent_name}></a>
+            <li><span class="divider">/</span></li>
+            <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewforum.php?forum=<{$forum_id}>"><{$forum_name}></a>
+        <{elseif $forum_name}>
+            <li><span class="divider">/</span></li> 
+            <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewforum.php?forum=<{$forum_id}>"><{$forum_name}></a>
+        <{/if}>
+        <li><span class="divider">/</span></li>
+        <strong><{$lang_title}></strong>
+		</ul>
+    </div>
+
+<div class="clear"></div>
+	<{if $viewer_level gt 1}>
+	<hr class="left width50" size="1" /> 
+		<div class="text-right" id="admin">
+			<{if $mode gt 1}>
+				<form name="form_posts_admin" action="action.post.php" method="POST" onsubmit="javascript: if(window.document.forum_posts_admin.op.value &lt; 1){return false;}">
+					<{$smarty.const._ALL}>: <input type="checkbox" name="post_check" id="post_check" value="1" onclick="xoopsCheckAll('form_posts_admin', 'post_check');" /> 
+					<select name="op">
+						<option value="0"><{$smarty.const._SELECT}></option>
+						<option value="delete"><{$smarty.const._DELETE}></option>
+						<{if $status eq "pending"}>
+							<option value="approve"><{$smarty.const._MD_APPROVE}></option>
+						<{elseif $status eq "deleted"}>
+							<option value="restore"><{$smarty.const._MD_RESTORE}></option>
+						<{/if}>
+					</select>
+					<input type="hidden" name="uid" value="<{$uid}>" /> | 
+					<input type="submit" name="submit" value="<{$smarty.const._SUBMIT}>" /> | 
+					<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewpost.php?uid=<{$uid}>" target="_self" title="<{$smarty.const._MD_TYPE_VIEW}>"><{$smarty.const._MD_TYPE_VIEW}></a>
+			<{else}>
+				<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewpost.php?uid=<{$uid}>&amp;status=active#admin" target="_self" title="<{$smarty.const._MD_TYPE_ADMIN}>"><{$smarty.const._MD_TYPE_ADMIN}></a> | 
+				<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewpost.php?uid=<{$uid}>&amp;status=pending#admin" target="_self" title="<{$smarty.const._MD_TYPE_PENDING}>"><{$smarty.const._MD_TYPE_PENDING}></a> | 
+				<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewpost.php?uid=<{$uid}>&amp;status=deleted#admin" target="_self" title="<{$smarty.const._MD_TYPE_DELETED}>"><{$smarty.const._MD_TYPE_DELETED}></a>
+			<{/if}>
+		</div>
+	<{/if}>
+	<div class="clear"></div>
+	<br />
+
+	<div class="pad5">
+		<a id="threadtop"></a><a href="#threadbottom"><{$smarty.const._MD_BOTTOM}></a>&nbsp;&nbsp;<{$left}>&nbsp;<a href="viewtopic.php?viewmode=flat&amp;order=<{$order_current}>&amp;topic_id=<{$topic_id}>&amp;forum=<{$forum_id}>&amp;move=prev&amp;topic_time=<{$topic_time}>"><{$smarty.const._MD_PREVTOPIC}></a>&nbsp;&nbsp;<{$right}>&nbsp;<a href="viewtopic.php?viewmode=flat&amp;order=<{$order_current}>&amp;topic_id=<{$topic_id}>&amp;forum=<{$forum_id}>&amp;move=next&amp;topic_time=<{$topic_time}>"><{$smarty.const._MD_NEXTTOPIC}></a>
+	</div>
+
+	<br />
+	<div>
+	<div class="dropdown">
+		<select
+			name="topicoption" id="topicoption"
+			class="menu"
+			onchange="if(this.options[this.selectedIndex].value.length >0 )	{ window.document.location=this.options[this.selectedIndex].value;}"
+		>
+			<option value=""><{$smarty.const._MD_TOPICOPTION}></option>
+			<option value="<{$newpost_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_NEWPOSTS}></option>
+			<option value="<{$all_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_ALL}></option>
+			<!--
+			<option value="<{$digest_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_DIGEST}></option>
+			<option value="<{$unreplied_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_UNREPLIED}></option>
+			<option value="<{$unread_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_UNREAD}></option>
+			//-->
+		</select>
+
+		<select
+			name="viewmode" id="viewmode"
+			class="menu"
+			onchange="if(this.options[this.selectedIndex].value.length >0 )	{ window.document.location=this.options[this.selectedIndex].value;}"
+		>
+			<option value=""><{$smarty.const._MD_VIEWMODE}></option>
+			<{foreachq item=act from=$viewmode_options}>
+				<option value="<{$act.link}>"><{$act.title}></option>
+			<{/foreach}>
+		</select>
+	</div>
+<div class="pagination pagination-right pagination-large">
+		<ul><{$pagenav}></ul>
+	</div>
+</div>
+<div class="clear"></div>
+<br />
+<br />
+
+<{foreachq item=post from=$posts}>
+	<{includeq file="db:newbb_thread.html" topic_post=$post}>
+	<div class="pull-right text-right pad5">
+		<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewtopic.php?topic_id=<{$post.topic_id}>"><strong><{$smarty.const._MD_VIEWTOPIC}></strong></a>
+		<{if !$forum_name }>
+			| <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewforum.php?forum=<{$post.forum_id}>"><strong><{$smarty.const._MD_VIEWFORUM}></strong></a>
+		<{/if}>
+	</div>
+	<div class="clear"></div>
+	<br />
+	<br />
+<{/foreach}>
+
+<{if $mode gt 1}>
+	</form>
+<{/if}>
+
+<br />
+<div>
+	<div class="pull-left text-left">
+		<a id="threadbottom"></a><a href="#threadtop"><{$smarty.const._MD_TOP}></a>
+	</div>
+<div class="pagination pagination-right pagination-large">
+		<ul><{$pagenav}></ul>
+	</div>
+</div>
+<div class="clear"></div>
+
+<br />
+<br />
+<div>
+<div class="pull-left text-left">
+	<form action="<{$xoops_url}>/modules/<{$xoops_dirname}>/search.php" method="get">
+		<input name="term" id="term" type="text" size="15" />
+		<input type="hidden" name="sortby" id="sortby" value="p.post_time desc" />
+		<input type="hidden" name="action" id="action" value="yes" />
+		<input type="hidden" name="searchin" id="searchin" value="both" />
+		<input type="submit" class="formButton" value="<{$smarty.const._MD_SEARCH}>" /><br />
+		[<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/search.php"><{$smarty.const._MD_ADVSEARCH}></a>]
+	</form>
+</div>
+<div class="pull-right text-right">
+	<{$forum_jumpbox}>
+</div>
+</div>
+<div class="clear"></div>
+<br />
+<{if $online}>
+	<br />
+	<{includeq file="db:newbb_online.html"}>
+<{/if}>
+<{includeq file='db:newbb_notification_select.html'}>
+<!-- end module contents -->

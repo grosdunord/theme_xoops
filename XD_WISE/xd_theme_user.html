@@ -1,0 +1,58 @@
+	<{if !$xoops_isuser}>
+	<ul class="xd-padtop">
+	<li class="dropdown btn btn-primary" id="menu1">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> <{$smarty.const._THEME_LOGIN}> <b class="caret"></b></a>
+		<div class="dropdown-menu xd-pad20">
+			<form action="<{xoAppUrl user.php}>" method="post">
+			<strong><{$smarty.const._THEME_PSEUDO}></strong><br />
+			<div class="input-prepend">
+				<span class="add-on"><i class="icon-user"></i></span><input class="xdlogin" type="text" name="uname" value="<{$block.unamevalue}>" maxlength="25" />
+			</div><br />
+			<strong><{$smarty.const._THEME_PASSWORD}></strong><br />
+			<div class="input-prepend">
+				<span class="add-on"><i class="icon-lock"></i></span>
+			<input class="xdlogin" type="password" name="pass" maxlength="32" />
+			</div>
+			<br />
+				<input type="checkbox" name="rememberme" value="On" class ="formButton" /><span style="text-shadow:none;color:#000;"><a data-placement="bottom" data-toggle="tooltip" data-original-title="Cochez cette case pour rester connecté lorsque vous quitterez cette page et que vous reviendrez à nouveau dessus.">Se souvenir</a></span>
+			<br />
+			<br />
+			<input type="hidden" name="xoops_redirect" value="<{$xoops_requesturi}>" />
+			<input type="hidden" name="op" value="login" />
+			<input type="submit" value="Se connecter" /><br />
+			<{$block.sslloginlink}>
+			</form>
+			<a title="" data-placement="bottom" data-toggle="tooltip" href="<{xoAppUrl user.php#lost}>" data-original-title="Cliquez sur ce lien lorsque vous avez oublié votre mot de passe" style="text-shadow:none"><{$smarty.const._THEME_FORGOTTEN_PASSWORD}></a>
+		</div>
+	</li> 
+  <li class="btn btn-info hidden-phone" id="menu2"><a style="color:#fff;text-decoration:none;" href="<{xoAppUrl register.php}>" id="menu4"><i class="icon-white icon-leaf"></i> <{$smarty.const._THEME_REGISTER}></a></li>
+	</ul>    
+	<{else}>
+	<div class="btn-group pull-right xd-padtop">
+	    <button class="btn"><{$smarty.const._THEME_MY_ACCOUNT}></button>
+	    <button class="btn dropdown-toggle" data-toggle="dropdown">
+	    <span class="caret"></span>
+	    </button>
+	    <ul class="dropdown-menu">
+	    	<{if $xoops_isadmin}>
+				<li class="xd-user"><a href="<{xoAppUrl admin.php}>" title="" rel="external"><i class="icon-wrench"></i><span><{$smarty.const._THEME_ADMIN}></span></a></li>
+			<{/if}>
+				<li class="xd-user"><a href="<{xoAppUrl user.php}>" title=""><i class="icon-user"></i><span><{$smarty.const._THEME_VIEW_ACCOUNT}></span></a></li>
+				<li class="xd-user"><a href="<{xoAppUrl edituser.php}>" title=""><i class="icon-edit"></i><span><{$smarty.const._THEME_EDIT_ACCOUNT}></span></a></li>
+				<li class="xd-user"><a href="<{xoAppUrl notifications.php}>" title=""><i class="icon-comment"></i><span><{$smarty.const._THEME_NOTIFICATION}></span></a></li>
+			<{xoInboxCount assign=pm_count}>
+			<{if $pm_count}>
+				<li class="xd-user"><a href="<{xoAppUrl modules/mpmanager/msgbox.php?catbox=1}>" title=""><i class="icon-envelope"></i><span><{$smarty.const._THEME_YOU_HAVE_MP}> (<strong><{$pm_count}></strong>) MP</a></span></li><{else}><li class="xd-user"><a href="<{xoAppUrl modules/mpmanager/msgbox.php?catbox=1}>" title=""><i class="icon-envelope"></i><span><{$smarty.const._THEME_YOU_HAVE_NO_MP}></span></a></li>
+			<{/if}>
+				<li class="divider"></li>
+				<li class="xd-user"><a href="<{xoAppUrl user.php?op=logout}>" title=""><i class="icon-off"></i><span><{$smarty.const._THEME_LOGOUT}></span></a></li>
+	    </ul>
+	</div>
+	<{/if}>
+
+
+<script>
+jQuery(function ($) {
+   $("a").tooltip()
+});
+</script>

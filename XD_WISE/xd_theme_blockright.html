@@ -1,0 +1,13 @@
+<{if $xoBlocks.canvas_right}>
+<div id="xd-rightBlock">
+    <div class="span2 pull-right">
+		<{foreach item=block from=$xoBlocks.canvas_right}>
+        <div id="XD-block-<{$block.module}>-<{$block.id}>">
+        <{if $block.title}><div class="xd-bk-Title"><p><{$block.title}></p></div><div class="xd-height-5"></div><{/if}>
+        <div class="xd-blockContent xd-bk-Content"><{$block.content}></div>
+        </div>
+        <div class="xd-height-15"></div>
+	    <{/foreach}>
+    </div>
+</div>    
+<{/if}>
